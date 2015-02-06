@@ -1,23 +1,27 @@
 package com.example.duchv.myapplication;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.view.View.OnClickListener;
-import android.widget.Switch;
+
+import java.util.Calendar;
 
 
 public class MainActivity extends ActionBarActivity {
 
     public final static String EXTRA_MESSAGE = "com.example.duchv.myapplication.MESSAGE";
+
+    private PendingIntent pendingIntent;
 
     public void sendMessage(View view){
         Intent itent = new Intent(this,DisplayMessageActivity.class);
@@ -81,21 +85,40 @@ public class MainActivity extends ActionBarActivity {
 
     public void showDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Look at this dialog!")
+        builder.setMessage("Ok ->show notification or Cancel -> set Arlam ")
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        //do things
+                        //test send and show notifi by broadcast
+                        Intent sendPush = new Intent();
+                        sendPush.setAction("com.google.android.c2dm.intent.RECEIVE");
+                        sendOrderedBroadcast(sendPush, null);
                     }
                 })
                 .setNegativeButton("CANCEL",new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int id){
                         //
+                        setAlarm();
                     }
                 });
 
         AlertDialog alert = builder.create();
         alert.show();
 }
+
+    private void setAlarm(){
+        //set alarm to show notification.
+        //create intent
+        Intent myIntent = new Intent(this,MyNotificationService.class);
+        //create alarm
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        pendingIntent= PendingIntent.getService(this,0,myIntent,0) ;
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2015,2,6,21,30,0);
+
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+    }
+
 
 }
