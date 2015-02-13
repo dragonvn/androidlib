@@ -115,9 +115,16 @@ public class MainActivity extends ActionBarActivity {
         pendingIntent= PendingIntent.getService(this,0,myIntent,0) ;
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2015,2,6,21,30,0);
+        calendar.set(Calendar.HOUR_OF_DAY, 13);
+        calendar.set(Calendar.MINUTE,8);
+        calendar.set(Calendar.SECOND, 0);
 
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+//        AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//        int interval = 8000;
+//
+//        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
+//        Toast.makeText(this, "Alarm Set", Toast.LENGTH_SHORT).show();
     }
 
 

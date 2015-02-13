@@ -50,9 +50,10 @@
             </intent-filter>
         </receiver>
         <service android:name=".background.GcmIntentService" />
+        <service android:name=".MyNotificationService" />
 
     </application>
-    <uses-sdk android:minSdkVersion="11"/>
+    <uses-sdk android:minSdkVersion="17"/>
 
 
 </manifest>

@@ -1,0 +1,118 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="vn.heallife.duchv.ouralarm.ui.fragment.AlarmEdit">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/background_material_light">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/alarm_item_height"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time"
+                android:textSize="@dimen/setting_font_size"
+                android:textStyle="bold"
+                android:layout_weight="0.4" />
+            <EditText
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/alarm_hour"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" : "
+                android:textSize="@dimen/setting_font_size"
+                android:textStyle="bold"/>
+            <EditText
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/alarm_minus"/>
+            </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#aaa"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/alarm_item_height"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/setting_font_size"
+                android:textStyle="bold"
+                android:text="@string/repeat"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All Day"
+                android:textSize="9pt"/>
+            </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#aaa"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/setting_font_size"
+                android:textStyle="bold"
+                android:text="Alarm Message"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#aaa"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/abc_action_button_min_height_material"
+            android:id="@+id/bottom_menu_top"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:padding="@dimen/abc_action_bar_default_padding_material"
+            android:background="@color/background_bottom_bar_material">
+            <ImageButton
+                android:layout_width="@dimen/abc_action_button_min_width_material"
+                android:layout_height="@dimen/abc_action_button_min_height_material"
+                android:src="@drawable/ic_action_add_alarm"
+                android:background="@color/background_bottom_bar_material"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+            </View>
+            <ImageButton
+                android:layout_width="@dimen/abc_action_button_min_width_material"
+                android:layout_height="@dimen/abc_action_button_min_height_material"
+                android:src="@android:drawable/ic_menu_delete"
+                android:background="@color/background_bottom_bar_material"/>
+        </LinearLayout>
+
+        </LinearLayout>
+
+
+</FrameLayout>
