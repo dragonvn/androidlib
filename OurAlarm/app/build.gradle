@@ -22,4 +22,9 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
+    compile "com.google.android.gms:play-services:3.1.+"
+//    compile files('/Users/duchv/Documents/androidlib/OurAlarm/libs/classes.jar')
+//    compile files('/Users/duchv/Documents/androidlib/OurAlarm/libs/google-play-services.jar')
+//    compile files('/Users/duchv/Documents/androidlib/OurAlarm/libs/openudidandroid.jar')
+//    compile files('/Users/duchv/Documents/androidlib/OurAlarm/libs/PushSDK.jar')
 }

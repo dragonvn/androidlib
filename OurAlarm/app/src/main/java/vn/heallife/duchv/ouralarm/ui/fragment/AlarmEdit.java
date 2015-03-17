@@ -20,6 +20,16 @@ public class AlarmEdit extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    private String TAG = "ALARMEDIT";
+
+    public String getTAG() {
+        return TAG;
+    }
+
+    public static AlarmEdit newInstance(){
+        AlarmEdit alarmEdit = new AlarmEdit();
+        return  alarmEdit;
+    }
     public AlarmEdit() {
         // Required empty public constructor
     }

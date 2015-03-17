@@ -11,6 +11,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="time">Alarm Time</string>
     <string name="repeat">Repeat</string>
-
+    <string name="title_activity_result">Result</string>
 
 </resources>

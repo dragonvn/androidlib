@@ -1,12 +1,14 @@
 package vn.heallife.duchv.ouralarm.ui.fragment;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import vn.heallife.duchv.ouralarm.R;
 
@@ -19,11 +21,15 @@ import vn.heallife.duchv.ouralarm.R;
  * create an instance of this fragment.
  */
 public class AlarmView extends Fragment {
+
+
     public String getTAG() {
         return TAG;
     }
 
     private final String TAG = "ALARMVIEW";
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -43,6 +49,9 @@ public class AlarmView extends Fragment {
 //     * @param param2 Parameter 2.
      * @return A new instance of fragment AlarmView.
      */
+
+
+
 
     public static AlarmView newInstance() {
         AlarmView fragment = new AlarmView();
@@ -69,13 +78,32 @@ public class AlarmView extends Fragment {
 //            mParam1 = getArguments().getString(ARG_PARAM1);
 //            mParam2 = getArguments().getString(ARG_PARAM2);
 //        }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_alarm_view, container, false);
+        View v = inflater.inflate(R.layout.fragment_alarm_view, container, false);
+        if(v == null){
+            return v;
+        }
+
+        ImageButton addAlarm = (ImageButton) v.findViewById(R.id.add_alarm);
+        ImageButton removeAlarm = (ImageButton) v.findViewById(R.id.remove_alarm);
+        addAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlarmEdit alarmEdit = AlarmEdit.newInstance();
+                showFragment(R.id.container,alarmEdit,alarmEdit.getTAG());
+
+            }
+        });
+        return v;
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -115,6 +143,14 @@ public class AlarmView extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+    private void showFragment(int id,Fragment fragment, String fragmentTag){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+
+        ft.replace(id,fragment,fragmentTag);
+        ft.addToBackStack(fragmentTag);
+        ft.commit();
     }
 
 }

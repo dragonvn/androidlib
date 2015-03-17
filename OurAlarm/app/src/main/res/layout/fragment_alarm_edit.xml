@@ -7,7 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/background_material_light">
+        android:background="@color/background_material_light"
+        android:clickable="false">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/alarm_item_height"
@@ -73,7 +74,10 @@
                 android:text="Alarm Message"/>
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:hint="Round"
+                android:padding="8dp"
+                android:gravity="center" />
 
         </LinearLayout>
 
@@ -97,8 +101,9 @@
             <ImageButton
                 android:layout_width="@dimen/abc_action_button_min_width_material"
                 android:layout_height="@dimen/abc_action_button_min_height_material"
-                android:src="@drawable/ic_action_add_alarm"
-                android:background="@color/background_bottom_bar_material"/>
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:background="@color/background_bottom_bar_material"
+                android:id="@+id/add_done"/>
             <View
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -108,8 +113,9 @@
             <ImageButton
                 android:layout_width="@dimen/abc_action_button_min_width_material"
                 android:layout_height="@dimen/abc_action_button_min_height_material"
-                android:src="@android:drawable/ic_menu_delete"
-                android:background="@color/background_bottom_bar_material"/>
+                android:src="@android:drawable/ic_menu_save"
+                android:background="@color/background_bottom_bar_material"
+                android:id="@+id/add_cancel"/>
         </LinearLayout>
 
         </LinearLayout>
