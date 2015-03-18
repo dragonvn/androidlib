@@ -1,14 +1,18 @@
 package vn.heallife.duchv.ouralarm.ui.fragment;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import vn.heallife.duchv.ouralarm.R;
+import vn.heallife.duchv.ouralarm.background.model.Alarm;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +25,13 @@ public class AlarmEdit extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     private String TAG = "ALARMEDIT";
+
+    private EditText hour;
+    private EditText minus;
+    private EditText message;
+    private ImageButton cancelButton;
+    private ImageButton saveButton;
+
 
     public String getTAG() {
         return TAG;
@@ -38,16 +49,34 @@ public class AlarmEdit extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_alarm_edit, container, false);
+        hour =(EditText) view.findViewById(R.id.alarm_hour);
+        minus = (EditText) view.findViewById(R.id.alarm_minus);
+        message = (EditText) view.findViewById(R.id.alarm_message);
+        cancelButton = (ImageButton) view.findViewById(R.id.add_cancel);
+        saveButton = (ImageButton) view.findViewById(R.id.add_done);
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backToAlarmList();
+            }
+        });
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Alarm alarm = new Alarm(hour.getText().toString(),minus.getText().toString(),message.getText().toString());
+                AlarmView.arrAlarm.add(alarm);
+                AlarmView.adapter.notifyDataSetChanged();
+                backToAlarmList();
+            }
+        });
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_alarm_edit, container, false);
+        return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-//    public void onButtonPressed(Uri uri) {
-//        if (mListener != null) {
-//            mListener.onFragmentInteraction(uri);
-//        }
-//    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -79,6 +108,12 @@ public class AlarmEdit extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+    private void backToAlarmList(){
+        AlarmView alarmView = AlarmView.newInstance();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.container, alarmView).commit();
     }
 
 }

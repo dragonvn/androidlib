@@ -8,9 +8,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 import vn.heallife.duchv.ouralarm.R;
+import vn.heallife.duchv.ouralarm.background.model.Alarm;
+import vn.heallife.duchv.ouralarm.ui.AlarmListAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,26 +35,13 @@ public class AlarmView extends Fragment {
 
     private final String TAG = "ALARMVIEW";
 
+    public static ArrayList<Alarm> arrAlarm = new ArrayList<Alarm>();
+    public static ArrayAdapter<Alarm> adapter = null;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    ImageButton addAlarm;
+    ImageButton removeAlarm;
+    ListView listAlarm;
 
-    // TODO: Rename and change types of parameters
-//    private String mParam1;
-//    private String mParam2;
-//
-//    private OnFragmentInteractionListener mListener;
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
-     * @return A new instance of fragment AlarmView.
-     */
 
 
 
@@ -58,15 +51,6 @@ public class AlarmView extends Fragment {
 
         return fragment;
     }
-    // TODO: Rename and change types and number of parameters
-//    public static AlarmView newInstance(String param1, String param2) {
-//        AlarmView fragment = new AlarmView();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
     public AlarmView() {
         // Required empty public constructor
     }
@@ -74,10 +58,6 @@ public class AlarmView extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
 
 
     }
@@ -91,8 +71,9 @@ public class AlarmView extends Fragment {
             return v;
         }
 
-        ImageButton addAlarm = (ImageButton) v.findViewById(R.id.add_alarm);
-        ImageButton removeAlarm = (ImageButton) v.findViewById(R.id.remove_alarm);
+        addAlarm = (ImageButton) v.findViewById(R.id.add_alarm);
+        removeAlarm = (ImageButton) v.findViewById(R.id.remove_alarm);
+        listAlarm = (ListView)v.findViewById(R.id.alarm_list);
         addAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,9 +82,15 @@ public class AlarmView extends Fragment {
 
             }
         });
+        removeAlarm.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //To Do
+            }
+        });
+        adapter = new AlarmListAdapter(getActivity(),R.layout.alarm_list_item,arrAlarm);
+        listAlarm.setAdapter(adapter);
         return v;
-
-
     }
 
     // TODO: Rename method, update argument and hook method into UI event

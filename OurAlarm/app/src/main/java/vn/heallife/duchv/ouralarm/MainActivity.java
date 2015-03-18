@@ -25,14 +25,14 @@ public class MainActivity extends ActionBarActivity {
 
         if (savedInstanceState == null) {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
-            ft.add(R.id.container, new SplashScreenFragment()).commit();;
+            ft.add(R.id.container, new SplashScreenFragment()).commit();
 
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     AlarmView alarmView = AlarmView.newInstance();
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.replace(R.id.container,alarmView).commit();;
+                    ft.replace(R.id.container, alarmView).commit();
                 }
             },2000);
 
@@ -142,5 +142,8 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

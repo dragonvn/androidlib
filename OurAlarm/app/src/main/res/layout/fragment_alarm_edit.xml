@@ -15,7 +15,7 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:text="@string/time"
                 android:textSize="@dimen/setting_font_size"
@@ -71,13 +71,14 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/setting_font_size"
                 android:textStyle="bold"
-                android:text="Alarm Message"/>
+                android:text="@string/message_title_text"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Round"
+                android:hint="@string/text_edit_hint_message"
                 android:padding="8dp"
-                android:gravity="center" />
+                android:gravity="center"
+                android:id="@+id/alarm_message"/>
 
         </LinearLayout>
 
@@ -86,8 +87,8 @@
             android:layout_height="1dp"
             android:background="#aaa"/>
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"/>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -103,7 +104,7 @@
                 android:layout_height="@dimen/abc_action_button_min_height_material"
                 android:src="@android:drawable/ic_menu_close_clear_cancel"
                 android:background="@color/background_bottom_bar_material"
-                android:id="@+id/add_done"/>
+                android:id="@+id/add_cancel"/>
             <View
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -115,7 +116,7 @@
                 android:layout_height="@dimen/abc_action_button_min_height_material"
                 android:src="@android:drawable/ic_menu_save"
                 android:background="@color/background_bottom_bar_material"
-                android:id="@+id/add_cancel"/>
+                android:id="@+id/add_done"/>
         </LinearLayout>
 
         </LinearLayout>
