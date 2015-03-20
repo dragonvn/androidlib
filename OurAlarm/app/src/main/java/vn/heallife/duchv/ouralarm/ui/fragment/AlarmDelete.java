@@ -63,8 +63,10 @@ public class AlarmDelete extends Fragment {
         delete .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteProcessing();
-                backToAlarmList();
+                if(checkDelete()) {
+                    deleteProcessing();
+                    backToAlarmList();
+                }
             }
         });
 
@@ -94,19 +96,35 @@ public class AlarmDelete extends Fragment {
         }
         adapter.notifyDataSetChanged();
     }
-    public void checkDelete(){
+//    public void checkDelete(){
+//        for(int i = alarmList.getChildCount()-1; i>=0;i--){
+//            View v = alarmList.getChildAt(i);
+//            CheckBox checked = (CheckBox)v.findViewById(R.id.delete_alarm_checked);
+//            if(checked.isChecked()){
+//                delete.setEnabled(true);
+//            }else{
+//                if(i==0){
+//                    delete.setEnabled(false);
+//                }
+//            }
+//        }
+//    }
+
+    private boolean checkDelete(){
         for(int i = alarmList.getChildCount()-1; i>=0;i--){
             View v = alarmList.getChildAt(i);
             CheckBox checked = (CheckBox)v.findViewById(R.id.delete_alarm_checked);
-            if(checked.isChecked()){
-                delete.setEnabled(true);
-            }else{
-                if(i==0){
-                    delete.setEnabled(false);
-                }
+            if(checked.isChecked()) {
+                return true;
             }
         }
+        return false;
     }
 
 
 }
+
+//interface DeleteButton{
+//    public void Checked(){
+//
+//}
