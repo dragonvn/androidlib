@@ -32,6 +32,8 @@ public class AlarmEdit extends Fragment {
     private ImageButton cancelButton;
     private ImageButton saveButton;
 
+    private int position = -1;
+
 
     public String getTAG() {
         return TAG;
@@ -39,6 +41,11 @@ public class AlarmEdit extends Fragment {
 
     public static AlarmEdit newInstance(){
         AlarmEdit alarmEdit = new AlarmEdit();
+        return  alarmEdit;
+    }
+    public static AlarmEdit editInstance(int position){
+        AlarmEdit alarmEdit = new AlarmEdit();
+        alarmEdit.position = position;
         return  alarmEdit;
     }
     public AlarmEdit() {
@@ -56,6 +63,34 @@ public class AlarmEdit extends Fragment {
         cancelButton = (ImageButton) view.findViewById(R.id.add_cancel);
         saveButton = (ImageButton) view.findViewById(R.id.add_done);
 
+
+        if(position!= -1){
+            final Alarm alarm = AlarmView.arrAlarm.get(position);
+            hour.setText(alarm.getHour());
+            message.setText(alarm.getText());
+            minus.setText(alarm.getMinus());
+
+            saveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    AlarmView.arrAlarm.get(position).editAlarm(hour.getText().toString(),minus.getText().toString(),message.getText().toString(),true);
+                    alarm.editAlarm(hour.getText().toString(),minus.getText().toString(),message.getText().toString(),true);
+                    AlarmView.adapter.notifyDataSetChanged();
+                    backToAlarmList();
+                }
+            });
+        }else{
+            saveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Alarm alarm = new Alarm(hour.getText().toString(),minus.getText().toString(),message.getText().toString(),true);
+                    AlarmView.arrAlarm.add(alarm);
+                    AlarmView.adapter.notifyDataSetChanged();
+                    backToAlarmList();
+                }
+            });
+        }
+
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,15 +98,7 @@ public class AlarmEdit extends Fragment {
             }
         });
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Alarm alarm = new Alarm(hour.getText().toString(),minus.getText().toString(),message.getText().toString());
-                AlarmView.arrAlarm.add(alarm);
-                AlarmView.adapter.notifyDataSetChanged();
-                backToAlarmList();
-            }
-        });
+
 
         // Inflate the layout for this fragment
         return view;

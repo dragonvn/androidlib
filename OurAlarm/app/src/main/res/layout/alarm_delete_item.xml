@@ -42,12 +42,10 @@
                 android:gravity="center_vertical"
                 android:id="@+id/alarm_item_repeat"/>
         </LinearLayout>
-        <Switch
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:id="@+id/alarm_item_switch"
-            android:focusable="false"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/delete_alarm_checked"/>
     </LinearLayout>
 
 </LinearLayout>

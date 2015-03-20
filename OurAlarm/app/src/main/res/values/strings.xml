@@ -12,7 +12,10 @@
     <string name="time">Alarm Time</string>
     <string name="message_title_text">Alarm Message</string>
     <string name="repeat">Repeat</string>
+    <string name="repeat_all">All Day</string>
     <string name="title_activity_result">Result</string>
+    <string name="cancel">キャンセル</string>
+    <string name="delete">削除</string>
     <string name="text_edit_hint_message">メッセージを入力ください</string>
 
 </resources>

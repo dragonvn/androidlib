@@ -8,6 +8,16 @@ public class Alarm {
     private String minus;
     private String text;
     private boolean[] repeat;
+    public boolean enable;
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+
     public String getText() {
         return text;
     }
@@ -39,9 +49,16 @@ public class Alarm {
     public void setRepeat(boolean[] repeat) {
         this.repeat = repeat;
     }
-    public Alarm(String h, String m, String msg){
+    public Alarm(String h, String m, String msg, boolean enable){
         setHour(h);
         setMinus(m);
         setText(msg);
+        setEnable(enable);
+    }
+    public void editAlarm(String h, String m, String msg, boolean enable){
+        setHour(h);
+        setMinus(m);
+        setText(msg);
+        setEnable(enable);
     }
 }

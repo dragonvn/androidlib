@@ -8,29 +8,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import vn.heallife.duchv.ouralarm.Config;
 import vn.heallife.duchv.ouralarm.R;
 import vn.heallife.duchv.ouralarm.background.model.Alarm;
-import vn.heallife.duchv.ouralarm.ui.AlarmListAdapter;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link AlarmView.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link AlarmView#newInstance} factory method to
- * create an instance of this fragment.
+ * Created by duchv on 3/19/15.
  */
-public class AlarmView extends Fragment {
-
-
+public class AlarmListView extends Fragment {
     public String getTAG() {
         return TAG;
     }
@@ -48,12 +38,12 @@ public class AlarmView extends Fragment {
 
 
 
-    public static AlarmView newInstance() {
-        AlarmView fragment = new AlarmView();
+    public static AlarmListView newInstance() {
+        AlarmListView fragment = new AlarmListView();
 
         return fragment;
     }
-    public AlarmView() {
+    public AlarmListView() {
         // Required empty public constructor
     }
 
@@ -69,38 +59,7 @@ public class AlarmView extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_alarm_view, container, false);
-        if(v == null){
-            return v;
-        }
 
-        addAlarm = (ImageButton) v.findViewById(R.id.add_alarm);
-        removeAlarm = (ImageButton) v.findViewById(R.id.remove_alarm);
-        listAlarm = (ListView) v.findViewById(R.id.alarm_list);
-        addAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlarmEdit alarmEdit = AlarmEdit.newInstance();
-                showFragment(R.id.container,alarmEdit,alarmEdit.getTAG());
-
-            }
-        });
-        removeAlarm.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                AlarmDelete alarmDelete = new AlarmDelete();
-                showFragment(R.id.container,alarmDelete,alarmDelete.getTAG());
-            }
-        });
-        adapter = new AlarmListAdapter(getActivity(),R.layout.alarm_list_item,arrAlarm, Config.NEW_EDIT_ALARM);
-        listAlarm.setAdapter(adapter);
-        listAlarm.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AlarmEdit alarmEdit = AlarmEdit.editInstance(position);
-                showFragment(R.id.container,alarmEdit,alarmEdit.getTAG());
-
-            }
-        });
         return v;
     }
 
@@ -150,5 +109,4 @@ public class AlarmView extends Fragment {
         ft.addToBackStack(fragmentTag);
         ft.commit();
     }
-
 }
