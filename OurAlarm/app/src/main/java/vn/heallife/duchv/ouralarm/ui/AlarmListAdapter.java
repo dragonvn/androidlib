@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import vn.heallife.duchv.ouralarm.Config;
 import vn.heallife.duchv.ouralarm.R;
 import vn.heallife.duchv.ouralarm.background.model.Alarm;
+import vn.heallife.duchv.ouralarm.ui.fragment.AlarmDelete;
 
 /**
  * Created by duchv on 2/13/15.
@@ -81,7 +82,7 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
                 deleteCheck.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        
+                        AlarmDelete.getInstance().setDeleteEnable();
                     }
                 });
             }

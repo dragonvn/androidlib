@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
-
+import android.view.View.OnClickListener;
 import vn.heallife.duchv.ouralarm.R;
 import vn.heallife.duchv.ouralarm.background.model.Alarm;
 
@@ -89,6 +89,7 @@ public class AlarmEdit extends Fragment {
                     backToAlarmList();
                 }
             });
+
         }
 
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +104,6 @@ public class AlarmEdit extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
-
 
     @Override
     public void onAttach(Activity activity) {
@@ -141,6 +141,21 @@ public class AlarmEdit extends Fragment {
         AlarmView alarmView = AlarmView.newInstance();
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.container, alarmView).commit();
+    }
+
+    private class MyButton implements OnClickListener{
+        @Override
+        public void onClick(View v){
+            switch (v.getId())
+            {
+                case R.id.set_date_time:
+                    showPTimePickerDialog();
+            }
+        }
+
+    }
+    private void showPTimePickerDialog(){
+
     }
 
 }

@@ -30,8 +30,16 @@ public class AlarmDelete extends Fragment {
     public String getTAG() {
         return TAG;
     }
+    private static AlarmDelete alarmDelete;
 
-    public AlarmDelete() {
+    public static AlarmDelete getInstance(){
+        if(alarmDelete == null){
+               alarmDelete = new AlarmDelete();
+        }
+        return alarmDelete;
+    }
+
+    private AlarmDelete() {
         // Required empty public constructor
     }
     ListView alarmList;
@@ -50,6 +58,7 @@ public class AlarmDelete extends Fragment {
         }
         cancel = (Button) view.findViewById(R.id.delete_cancel);
         delete = (Button) view.findViewById(R.id.delete_done);
+        delete.setEnabled(false);
         alarmList = (ListView) view.findViewById(R.id.delete_alarm_list);
         adapter = new AlarmListAdapter(getActivity(),R.layout.alarm_delete_item,alamArray, Config.DELETE_ALARM);
         alarmList.setAdapter(adapter);
@@ -121,10 +130,12 @@ public class AlarmDelete extends Fragment {
         return false;
     }
 
+    public void setDeleteEnable(){
+            delete.setEnabled(checkDelete());
 
+    }
 }
 
-//interface DeleteButton{
-//    public void Checked(){
-//
-//}
+interface DeleteButton {
+    public void Checked();
+}

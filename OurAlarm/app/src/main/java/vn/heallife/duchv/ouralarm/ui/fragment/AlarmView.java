@@ -87,7 +87,7 @@ public class AlarmView extends Fragment {
         removeAlarm.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                AlarmDelete alarmDelete = new AlarmDelete();
+                AlarmDelete alarmDelete = AlarmDelete.getInstance();
                 showFragment(R.id.container,alarmDelete,alarmDelete.getTAG());
             }
         });

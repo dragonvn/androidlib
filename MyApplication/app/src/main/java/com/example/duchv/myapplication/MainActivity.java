@@ -94,13 +94,13 @@ public class MainActivity extends ActionBarActivity {
                         sendPush.setAction("com.google.android.c2dm.intent.RECEIVE");
                         sendOrderedBroadcast(sendPush, null);
                     }
-                })
-                .setNegativeButton("CANCEL",new DialogInterface.OnClickListener(){
-                    public void onClick(DialogInterface dialog, int id){
-                        //
-                        setAlarm();
-                    }
                 });
+//                .setNegativeButton("CANCEL",new DialogInterface.OnClickListener(){
+//                    public void onClick(DialogInterface dialog, int id){
+//                        //
+//                        setAlarm();
+//                    }
+//                });
 
         AlertDialog alert = builder.create();
         alert.show();
