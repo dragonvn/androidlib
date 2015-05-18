@@ -39,7 +39,7 @@ public class AlarmDelete extends Fragment {
         return alarmDelete;
     }
 
-    private AlarmDelete() {
+    public AlarmDelete() {
         // Required empty public constructor
     }
     ListView alarmList;
